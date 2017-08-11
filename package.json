@@ -1,0 +1,24 @@
+{
+  "name": "reddit_clone",
+  "version": "1.0.0",
+  "description": "A clone of reddit im making...",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeSippy/reddit_clone.git"
+  },
+  "keywords": [
+    "bad",
+    "clone",
+    "reddit"
+  ],
+  "author": "Jake Sippy",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JakeSippy/reddit_clone/issues"
+  },
+  "homepage": "https://github.com/JakeSippy/reddit_clone#readme"
+}
