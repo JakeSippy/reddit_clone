@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/JakeSippy/reddit_clone#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "pg": "7.1.2",
+    "sql": "^0.78.0"
   }
 }
