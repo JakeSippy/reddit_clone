@@ -1,22 +1,25 @@
-express = require('express');
-const { Pool, Client } = require('pg');
+var express = require('express');
+var app = express();
 
-const app = express();
+// port to be used for local deployment
 const port = 5000;
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-});
+// set EJS as the view engine
+app.set('view engine', 'ejs');
 
-pool.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-    console.log(err, res);
-    pool.end();
-});
-
+// Home page
 app.get('/', function(req, res) {
-    res.send('Hello');
+    res.render('pages/index.ejs');
 });
 
+app.get('/about', function(req, res) {
+    res.render('pages/about.ejs');
+});
+
+// Routing for static files (images, etc.)
+app.use('/static', express.static(__dirname + 'public'));
+
+// Start listening for connections
 app.listen((process.env.PORT || port), function() {
     console.log(`Listening at http://127.0.0.1:${port}`);
 });
