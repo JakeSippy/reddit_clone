@@ -4,8 +4,9 @@ var app = express();
 // port to be used for local deployment
 const port = 5000;
 
-// set EJS as the view engine
+// set EJS as the view engine and prettify output
 app.set('view engine', 'ejs');
+app.locals.pretty = true;
 
 // Home page
 app.get('/', function(req, res) {
