@@ -10,11 +10,11 @@ app.set('view engine', 'ejs');
 
 // Home page
 app.get('/', function(req, res) {
-    posts = db.query('SELECT * FROM postdata;', [], function(err, res) {
+    posts = db.query('SELECT * FROM postdata;', [], function(err, posts) {
         if (err) {
-            console.log(err, res);
+            console.log(err, posts);
         }
-        res.render('pages/index.ejs', {posts: res});
+        res.render('pages/index.ejs', {posts: posts});
     });
 });
 
