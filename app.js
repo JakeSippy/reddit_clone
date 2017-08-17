@@ -1,6 +1,9 @@
 var express = require('express');
-const db = require('./db/index.js');
+var db = require('./db/index');
 var app = express();
+
+// Routes
+var site = require('./routes/site');
 
 // port to be used for local deployment
 const port = 5000;
@@ -8,34 +11,23 @@ const port = 5000;
 // set EJS as the view engine
 app.set('view engine', 'ejs');
 
-// Home page
-app.get('/', function(req, res) {
-    posts = db.query('SELECT * FROM postdata;', [], function(err, posts) {
-        if (err) {
-            console.log(err, posts);
-        }
-        res.render('pages/index.ejs', {posts: posts});
-    });
-});
+////////////////////  Routes //////////////////////
 
-// About page (move to routing dir later)
-app.get('/about', function(req, res) {
-    res.render('pages/about.ejs');
-});
+// General Pages
+app.get('/', site.index);
+app.get('/about', site.about);
+app.get('/post/:id', site.viewpost);
 
-// Data page for testing
-app.get('/data', function(req, res) {
-    db.query('SELECT * FROM postdata', [], (err, result) => {
-        if (err) {
-            return err;
-        }
-        res.send(result);
-    });
-});
-    
+// Posts
+app.get('/posts', site.index);
 
-// Routing for static files
+// Static Pages
 app.use('/static', express.static(__dirname + 'public'));
+
+// 404 Catcher
+app.use(function(req, res, next) {
+    res.status(404).send('404 MF');
+});
 
 // Start listening for connections
 app.listen((process.env.PORT || port), function() {
