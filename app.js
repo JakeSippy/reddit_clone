@@ -1,6 +1,7 @@
 var express = require('express');
 var db = require('./db/index');
 var app = express();
+app.locals.pretty = true;
 
 // Routes
 var site = require('./routes/site');
@@ -16,10 +17,12 @@ app.set('view engine', 'ejs');
 // General Pages
 app.get('/', site.index);
 app.get('/about', site.about);
-app.get('/post/:id', site.viewpost);
+app.get('/posts/:id', site.viewpost);
 
 // Posts
-app.get('/posts', site.index);
+app.get('/posts/:id', site.viewpost);
+app.get('/post', site.makepost);
+app.post('/post', site.post);
 
 // Static Pages
 app.use('/static', express.static(__dirname + 'public'));

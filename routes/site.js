@@ -33,3 +33,11 @@ exports.viewpost = function(req, res) {
         res.render('pages/404');
     }
 }
+
+exports.makepost = function(req, res) {
+    res.render('pages/makepost');
+}
+
+exports.post = function(req, res) {
+    console.log(req);
+}

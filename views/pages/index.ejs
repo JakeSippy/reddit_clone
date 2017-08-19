@@ -1,28 +1,10 @@
-<!DOCTYPE>
-<html lang="en">
-    <head>
-        <%- include('../partials/head') %>
-    </head>
-    <body>
-
-        <header>
-            <%- include('../partials/header') %>
-        </header>
-
+<%- include('../partials/head') -%>
         <main>
             <div class="jumbotron">
                 <h1>Posts</h1>
-                <ul>
-                    <% for (var i = 0; i < posts.rows.length; i++) { %>
-                    <a href='/post/<%= posts.rows[i].postnumber %>'><li><%= posts.rows[i].postnumber %>: <%= posts.rows[i].title %>: <%=
-                 posts.rows[i].body %></li></a>
-                    <% } %>
+                <ul><% for (var i = 0; i < posts.rows.length; i++) { %>
+                    <a href='/post/<%= posts.rows[i].postnumber %>'><li><%= posts.rows[i].postnumber %>: <%= posts.rows[i].title %>: <%=posts.rows[i].body -%></li></a><% } %>
                 </ul>
             </div>
         </main>
-
-        <footer>
-            <%- include('../partials/footer') %>
-        </footer>
-    </body>
-</html>
+<%- include('../partials/footer') -%>
