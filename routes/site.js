@@ -39,5 +39,23 @@ exports.makepost = function(req, res) {
 }
 
 exports.post = function(req, res) {
-    console.log(req);
+    var title = req.body.title;
+    var body = req.body.post;
+    console.log('Title: ' + title + '\nBody:\n' + body);
+    db.query('SELECT COUNT(*) FROM postdata;', (err, response) => {
+        if (err) {
+            console.log(err);
+        }
+        count = response.rows[0].count;
+        count++;
+        db.query('INSERT INTO postdata(postnumber, title, body) VALUES($1, $2, $3);', [count, title, body], (err, response) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Successfully posted');
+                res.redirect('/');
+            }
+        });
+    });
+    console.log('Dont think this should ever be visable, if it is check routes/site');
 }

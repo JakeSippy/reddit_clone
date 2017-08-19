@@ -1,7 +1,10 @@
 var express = require('express');
 var db = require('./db/index');
+var bodyParser = require('body-parser');
+
 var app = express();
-app.locals.pretty = true;
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 // Routes
 var site = require('./routes/site');
@@ -17,7 +20,6 @@ app.set('view engine', 'ejs');
 // General Pages
 app.get('/', site.index);
 app.get('/about', site.about);
-app.get('/posts/:id', site.viewpost);
 
 // Posts
 app.get('/posts/:id', site.viewpost);
