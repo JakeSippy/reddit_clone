@@ -24,8 +24,12 @@
   "homepage": "https://github.com/JakeSippy/reddit_clone#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "crypto": "^1.0.1",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
+    "jquery": "^3.2.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg": "7.1.2",
     "sql": "^0.78.0"
   }

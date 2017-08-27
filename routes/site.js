@@ -57,5 +57,19 @@ exports.post = function(req, res) {
             }
         });
     });
-    console.log('Dont think this should ever be visable, if it is check routes/site');
+    res.end();
 }
+
+exports.register = function(req, res) {
+    res.render('pages/register');
+}
+
+exports.makeacc = function(req, res) {
+    var user = req.body.username;
+    var pass = req.body.password;
+    console.log(user);
+    console.log(pass);
+    
+}
+
+
